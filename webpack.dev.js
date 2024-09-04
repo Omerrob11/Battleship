@@ -7,5 +7,10 @@ module.exports = merge(common, {
   devServer: {
     static: "./dist",
     watchFiles: ["./src/template.html"],
+    open: {
+      app: {
+        name: "Google Chrome",
+      },
+    },
   },
 });
