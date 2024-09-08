@@ -11,6 +11,7 @@ function gameBoard() {
     if (!checkForValidPlace(xStart, yStart, direction, shipLength)) {
       return "not valid place";
       // later you will put code that do stuff when it's bad
+      // also - you will probably call the setPosition on the ship
     }
     allShips.push(ship);
     if (direction == "vertical") {
