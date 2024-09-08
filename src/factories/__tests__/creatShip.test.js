@@ -31,4 +31,30 @@ describe("create ship factory function", () => {
     }
     expect(shipCarrier.isSunk()).toBe(true);
   });
+
+  // incoming query function
+  // should return the position of the ship.
+  // at first, the position is null.
+  test("Should return the position of the ship", () => {
+    expect(shipCarrier.getPosition()).toEqual(null);
+  });
+
+  // incoming command function
+  // return the changed state -
+  test("should set the position of the ship", () => {
+    shipCarrier.setPosition([
+      { x: 5, y: 4 },
+      { x: 5, y: 5 },
+      { x: 5, y: 6 },
+      { x: 5, y: 7 },
+      { x: 5, y: 8 },
+    ]);
+    expect(shipCarrier.getPosition()).toEqual([
+      { x: 5, y: 4 },
+      { x: 5, y: 5 },
+      { x: 5, y: 6 },
+      { x: 5, y: 7 },
+      { x: 5, y: 8 },
+    ]);
+  });
 });

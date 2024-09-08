@@ -7,6 +7,13 @@
 function createShip(length) {
   const shipLength = length;
   let numberOfHits = 0;
+  let position = null;
+  function getPosition() {
+    return position;
+  }
+  function setPosition(positionedArray) {
+    position = positionedArray;
+  }
 
   return {
     getShipLength: () => shipLength,
@@ -17,6 +24,8 @@ function createShip(length) {
     hit: () => {
       numberOfHits = numberOfHits + 1;
     },
+    getPosition,
+    setPosition,
   };
 }
 
