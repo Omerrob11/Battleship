@@ -79,9 +79,6 @@ describe("Gabmeboard functionallity", () => {
     expect(testBoard.getAllShips()).toEqual([ship, ship3]);
   });
 
-  // report if all ships  has been sunk
-  //incoming query
-
   test("should return all the ships that been placed", () => {
     const ship4 = createShip(4);
     const ship5 = createShip(5);
@@ -90,7 +87,44 @@ describe("Gabmeboard functionallity", () => {
     expect(testBoard.getAllShips()).toEqual([ship4, ship5]);
   });
 
-  test.skip("check for empty space to place ships is empty", () => {
-    expect(testBoard.checkForValidPlace).toBeExisted;
+  // report if all ships  has been sunk
+  //incoming query, test the assert returned value
+  test("should report that all ships were sunk", () => {
+    const ship1 = createShip(5);
+    const ship2 = createShip(4);
+    const ship3 = createShip(3);
+    testBoard.placeShip(ship1, "horizontal", 1, 1);
+    testBoard.placeShip(ship2, "horizontal", 2, 1);
+    testBoard.placeShip(ship3, "horizontal", 3, 1);
+
+    for (let i = 1; i <= 5; i++) {
+      testBoard.receiveAttack(1, i);
+    }
+    for (let i = 1; i <= 4; i++) {
+      testBoard.receiveAttack(2, i);
+    }
+    for (let i = 1; i <= 3; i++) {
+      testBoard.receiveAttack(3, i);
+    }
+    expect(testBoard.isAllShipSunk()).toBe(true);
+  });
+
+  //incoming query, test the assert returned value
+  test("should report that all ships were not sunk", () => {
+    const ship1 = createShip(5);
+    const ship2 = createShip(4);
+    const ship3 = createShip(3);
+    testBoard.placeShip(ship1, "horizontal", 1, 1);
+    testBoard.placeShip(ship2, "horizontal", 2, 1);
+    testBoard.placeShip(ship3, "horizontal", 3, 1);
+
+    for (let i = 1; i <= 5; i++) {
+      testBoard.receiveAttack(1, i);
+    }
+    for (let i = 1; i <= 4; i++) {
+      testBoard.receiveAttack(2, i);
+    }
+
+    expect(testBoard.isAllShipSunk()).toBe(false);
   });
 });

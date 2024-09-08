@@ -69,12 +69,17 @@ function gameBoard() {
     return allShips;
   }
 
+  function isAllShipSunk() {
+    return allShips.every((ship) => ship.isSunk());
+  }
+
   return {
     getBoard: () => board,
     placeShip,
     receiveAttack,
     getMissedAttacks,
     getAllShips,
+    isAllShipSunk,
   };
 }
 function createBoardGame() {
